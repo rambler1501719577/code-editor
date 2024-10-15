@@ -1,15 +1,15 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
 // 该插件是对“webpack-md5-hash”的改进：在主文件中获取到各异步模块的hash值，然后将这些hash值与主文件的代码内容一同作为计算hash的参数，这样就能保证主文件的hash值会跟随异步模块的修改而修改。
 // const WebpackSplitHash = require('webpack-split-hash');
 // 压缩css
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const fs = require("fs");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const fs = require('fs')
 // const postcss = require('postcss-loader')
 
-const extractCSS = new ExtractTextPlugin('css/[name].css');
+const extractCSS = new ExtractTextPlugin('css/[name].css')
 module.exports = {
     module: {
         rules: [
@@ -19,7 +19,12 @@ module.exports = {
                 options: {
                     postcss: [
                         require('autoprefixer')({
-                            browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8']
+                            browsers: [
+                                'last 10 Chrome versions',
+                                'last 5 Firefox versions',
+                                'Safari >= 6',
+                                'ie > 8'
+                            ]
                         })
                     ]
                 }
@@ -39,7 +44,10 @@ module.exports = {
                 loader: 'file-loader',
                 options: { name: '[name].[ext]?[hash]' }
             },
-            { test: /\.(woff|ttf|eot|svg)/, loader: 'file-loader?name=font/[name].[ext]&publicPath=../' },
+            {
+                test: /\.(woff|ttf|eot|svg)/,
+                loader: 'file-loader?name=font/[name].[ext]&publicPath=../'
+            },
             {
                 test: /\.styl$/,
                 loader: 'style-loader!css-loader!stylus-loader'
@@ -91,16 +99,18 @@ module.exports = {
                                         require('postcss-selector-matches')({}),
                                         // 支持not解析，p:not(:first-child, .special)解析为p:not(:first-child), p:not(.special)
                                         require('postcss-selector-not')({})
-                                    ];
+                                    ]
                                 }
                             }
                         }
                     ]
                 })
-            }, {
+            },
+            {
                 test: /\.md$/,
                 loader: 'raw-loader'
-            }, {
+            },
+            {
                 test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader'
             }
@@ -121,18 +131,16 @@ module.exports = {
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
         }),
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, '../resources/highlight.js-11.3.1'),
-            to: path.resolve(__dirname, '../dist/highlightjs')
-        }, {
-            from: path.resolve(__dirname, '../resources/markdown'),
-            to: path.resolve(__dirname, '../dist/markdown')
-        }, {
-            context: 'node_modules/katex/dist',
-            from: {
-                glob: `${path.resolve(__dirname, '../node_modules/katex/dist')}/**/*.+(min.js|min.css|ttf|woff|woff2)`
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../resources/test.js'),
+                to: path.resolve(__dirname, '../dist/test.js')
             },
-            to: path.resolve(__dirname, '../dist/katex')
-        }])
+            {
+                from: path.resolve(__dirname, '../resources/test'),
+                to: path.resolve(__dirname, '../dist/test')
+            }
+        ])
     ]
 }
+

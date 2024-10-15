@@ -1,9 +1,10 @@
-import Vue from 'vue';
-var demo = require('./demo.vue');
-var sMd = require('../index.js');
+import Vue from 'vue'
+var demo = require('./demo.vue')
+var CodeEditor = require('../index.js')
 
-Vue.use(sMd);
+Vue.use(CodeEditor)
 new Vue({
-  el: '#main',
-  render: (h) => h(demo)
-});
+    el: '#main',
+    render: h => h(demo)
+})
+

@@ -1,8 +1,8 @@
 const merge = require('merges-utils')
 const base = require('./webpack.base.js')
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
     entry: {
@@ -17,7 +17,7 @@ const config = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
+            vue$: 'vue/dist/vue.esm.js',
             'muse-components': 'muse-ui/src'
         },
         extensions: ['.js', '.vue', '.less']
@@ -32,7 +32,7 @@ const config = {
     devtool: 'source-map'
 }
 
-const res = merge([base, config]);
+const res = merge([base, config])
 res.plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         names: ['vue', 'common'],
@@ -49,3 +49,4 @@ res.plugins = [
 ].concat(res.plugins)
 
 module.exports = res
+
