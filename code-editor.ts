@@ -1,9 +1,6 @@
 import { Component } from 'vue'
 interface VueCodeEditor {
-    markdownIt: any
-    mavonEditor: Component
-    LeftToolbar: Component
-    RightToolbar: Component
+    codeEditor: Component
     install: (Vue: any) => any
 }
 declare let editor: VueCodeEditor

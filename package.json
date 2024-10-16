@@ -26,15 +26,11 @@
     ],
     "files": [
         "dist",
-        "mavon-editor.d.ts",
+        "code-editor.d.ts",
         "src"
     ],
     "author": "hinesboy",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/hinesboy/mavonEditor/issues"
-    },
-    "homepage": "https://github.com/hinesboy/mavonEditor#readme",
     "dependencies": {
         "xss": "^1.0.6"
     },
@@ -53,6 +49,7 @@
         "copy-webpack-plugin": "^4.2.3",
         "css-loader": "^0.28.1",
         "eslint": "^4.11.0",
+        "ace-builds": "1.36.2",
         "eslint-config-standard": "^10.2.1",
         "eslint-plugin-html": "^4.0.0",
         "eslint-plugin-import": "^2.8.0",
